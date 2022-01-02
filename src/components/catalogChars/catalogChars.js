@@ -1,19 +1,17 @@
 import styled from "styled-components"
-import { Button, Col, colorModBlack, colorRed, Input, Row, TitleH2 } from "../all/all"
+import { Button, Col, Row, TitleH2 } from "../all/all"
 import cardThumbnail from "../../images/char.jpg";
 import loader from "../../images/loaderChar.png";
+import CharItem from "../charCard/charCard";
+import CharSearch from "../charSearch/charSearch";
 const CatalogCharInner = styled.section`
     padding: 50px 0;
 `;
 
+
 const CatalogCharList = styled(Col)`
     flex: 0 1 62.444%;
     margin: -15px -12.5px 0;
-    flex-wrap: wrap;
-    display: flex;
-    button {
-        margin: 30px auto 0 auto;
-    }
 `;
 
 const CatalogCharInfo = styled(Col)`
@@ -21,39 +19,8 @@ const CatalogCharInfo = styled(Col)`
     margin-left: 5px;
 `;
 
-const CatalogCharCard = styled.div`
-    min-width: 200px;
-    min-height: 318px;
-    display: block;
-    margin: 15px 12.5px 15px 12.5px;
-    background-color: ${colorModBlack};
-    filter: ${props => props.active ? 'drop-shadow(0px 5px 20px #9F0013)' : 'drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.25))'};
-    ${props => props.active ? 'transform: translateY(-10px);' : ''}
-    transition: .3s;
-    cursor: pointer;
-    &:hover {
-        filter: drop-shadow(0px 5px 20px #9F0013);
-        transform: translateY(-10px);
-    }
-`;
-
-const CatalogCharCardHeader = styled.div`
-    max-height: 200px;
-    max-width: 200px;
-`;
-
-const CatalogCharCardImg = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-`
-
-const CatalogCharCardBody = styled.div`
-    padding: 15px;
-`
-
 const CatalogCharListBtn = styled(Button)`
-    margin: auto;
+    margin: 30px auto 0 auto;
 `
 
 const CatalogCharInfoInner = styled.div`
@@ -107,34 +74,10 @@ const CatalogCharInfoItem = styled.li`
     }
 `
 
-const CatalogCharInfoInnerForm = styled(CatalogCharInfoInner)`
+const CharSearchInnerForm = styled(CatalogCharInfoInner)`
     margin-top: 30px;
 `
 
-const CatalogCharInfoForm = styled.form`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-    button {
-        margin-top: 10px;
-    }
-    button:first-child {
-        margin-top: 0;
-    }
-`
-
-const CatalogCharInfoInputWrapper = styled.div`
-    flex: 0 1 250px;
-`
-// eslint-disable-next-line
-const CatalogCharInfoFormError = styled.div`
-    font-weight: 700;
-    color: ${colorRed};
-    font-size: 18px;
-    line-height: 21px;
-    margin-top: 25px;
-`
 
 const LoaderImg = styled.img`
     width: 100%;
@@ -155,79 +98,11 @@ export default function CatalogChar() {
         <CatalogCharInner>
             <Row justifyContent="space-between">
                 <CatalogCharList>
-                    <CatalogCharCard active={true}>
-                        <CatalogCharCardHeader>
-                            <CatalogCharCardImg src={cardThumbnail} />
-                        </CatalogCharCardHeader>
-                        <CatalogCharCardBody>
-                            <TitleH2>ABYSS</TitleH2>
-                        </CatalogCharCardBody>
-                    </CatalogCharCard>
-                    <CatalogCharCard>
-                        <CatalogCharCardHeader>
-                            <CatalogCharCardImg src={cardThumbnail} />
-                        </CatalogCharCardHeader>
-                        <CatalogCharCardBody>
-                            <TitleH2>ABYSS</TitleH2>
-                        </CatalogCharCardBody>
-                    </CatalogCharCard>
-                    <CatalogCharCard>
-                        <CatalogCharCardHeader>
-                            <CatalogCharCardImg src={cardThumbnail} />
-                        </CatalogCharCardHeader>
-                        <CatalogCharCardBody>
-                            <TitleH2>ABYSS</TitleH2>
-                        </CatalogCharCardBody>
-                    </CatalogCharCard>
-                    <CatalogCharCard>
-                        <CatalogCharCardHeader>
-                            <CatalogCharCardImg src={cardThumbnail} />
-                        </CatalogCharCardHeader>
-                        <CatalogCharCardBody>
-                            <TitleH2>ABYSS</TitleH2>
-                        </CatalogCharCardBody>
-                    </CatalogCharCard>
-                    <CatalogCharCard>
-                        <CatalogCharCardHeader>
-                            <CatalogCharCardImg src={cardThumbnail} />
-                        </CatalogCharCardHeader>
-                        <CatalogCharCardBody>
-                            <TitleH2>ABYSS</TitleH2>
-                        </CatalogCharCardBody>
-                    </CatalogCharCard>
-                    <CatalogCharCard>
-                        <CatalogCharCardHeader>
-                            <CatalogCharCardImg src={cardThumbnail} />
-                        </CatalogCharCardHeader>
-                        <CatalogCharCardBody>
-                            <TitleH2>ABYSS</TitleH2>
-                        </CatalogCharCardBody>
-                    </CatalogCharCard>
-                    <CatalogCharCard>
-                        <CatalogCharCardHeader>
-                            <CatalogCharCardImg src={cardThumbnail} />
-                        </CatalogCharCardHeader>
-                        <CatalogCharCardBody>
-                            <TitleH2>ABYSS</TitleH2>
-                        </CatalogCharCardBody>
-                    </CatalogCharCard>
-                    <CatalogCharCard>
-                        <CatalogCharCardHeader>
-                            <CatalogCharCardImg src={cardThumbnail} />
-                        </CatalogCharCardHeader>
-                        <CatalogCharCardBody>
-                            <TitleH2>ABYSS</TitleH2>
-                        </CatalogCharCardBody>
-                    </CatalogCharCard>
-                    <CatalogCharCard>
-                        <CatalogCharCardHeader>
-                            <CatalogCharCardImg src={cardThumbnail} />
-                        </CatalogCharCardHeader>
-                        <CatalogCharCardBody>
-                            <TitleH2>ABYSS</TitleH2>
-                        </CatalogCharCardBody>
-                    </CatalogCharCard>
-                    <CatalogCharListBtn size="big" colorBG="red">LOAD MORE</CatalogCharListBtn>
+                    <Row>
+                        
+                    <CharItem name="ABYSS"></CharItem>
+                    </Row>
+                    <CatalogCharListBtn size="big" colorBG="red"><span>load more</span></CatalogCharListBtn>
                 </CatalogCharList>
                 <CatalogCharInfo>
                     <CatalogCharInfoInner>
@@ -237,8 +112,8 @@ export default function CatalogChar() {
                             </CatalogCharInfoAvatar>
                             <CatalogCharInfoUi>
                                 <CatalogCharInfoName color="#000">ABYSS</CatalogCharInfoName>
-                                <Button size="md" colorBG="red">HOMEPAGE</Button>
-                                <Button size="md" colorBG="gray">WIKI</Button>
+                                <Button size="md" colorBG="red"><span>HOMEPAGE</span></Button>
+                                <Button size="md" colorBG="gray"><span>WIKI</span></Button>
                             </CatalogCharInfoUi>
                         </Row>
                         <p>
@@ -280,21 +155,12 @@ export default function CatalogChar() {
                             </CatalogCharInfoItem>
                         </CatalogCharInfoList>
                     </CatalogCharInfoInner>
-                    <CatalogCharInfoInnerForm>
-                        <CatalogCharInfoTitle>
-                        Or find a character by name:
-                        </CatalogCharInfoTitle>
-                        <CatalogCharInfoForm>
-                            <CatalogCharInfoInputWrapper>
-                                <Input id="name" placeholder="Enter name" size="250px"></Input>
-                            </CatalogCharInfoInputWrapper>
-                            <div>
-                                <Button size="md" colorBG="red">find</Button>
-                            </div>
-                        </CatalogCharInfoForm>
-                    </CatalogCharInfoInnerForm>
+                    <CharSearch/>
                 </CatalogCharInfo>
             </Row>
         </CatalogCharInner>
     )
 }
+
+
+export { CatalogCharInfoTitle, CharSearchInnerForm }

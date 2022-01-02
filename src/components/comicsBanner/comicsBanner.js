@@ -1,24 +1,46 @@
 import styled from "styled-components";
-import comicsBannerBg from '../../images/comicsBannerBg.png';
-import { colorModBlack, TitleH2 } from "../all/all";
+import { colorModBlack, Container, Row, TitleH2 } from "../all/all";
+import avengers from "../../images/comicsBannerAvengers.png";
+import avengersLogo from "../../images/comicsBannerAvengersLogo.png";
 
 
 const ComicsBannerInner = styled.section`
-    background-image: url(${comicsBannerBg});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     background-color: ${colorModBlack};
-    padding: 18px 0 26px;
+    position: relative;
 `;
 
-export default function ComicsBanner () {
+const ComicsBannerContainer = styled(Container)`
+    max-width: 540px;
+    padding: 18px 0 30px;
+`;
+
+const ComicsBannerAvengers = styled.img`
+    width: 100%;
+    max-width: 152px;   
+    margin: 0 0 0 45px;
+`
+
+const ComicsBannerAvengersLogo = styled.img`
+    width: 100%;
+    max-width: 132px;   
+    margin: 0 19px 0 0;
+`
+
+export default function ComicsBanner() {
     return (
-        <ComicsBannerInner>
-            <TitleH2 color="#fff">
-            New comics every week!<br>
-            Stay tuned!
-            </TitleH2>
-        </ComicsBannerInner>
+        <Container>
+            <ComicsBannerInner>
+                <Row>
+                    <ComicsBannerAvengers src={avengers} />
+                    <ComicsBannerContainer>
+                        <TitleH2 color="#fff">
+                            New comics every week!<br />
+                            Stay tuned!
+                        </TitleH2>
+                    </ComicsBannerContainer>
+                    <ComicsBannerAvengersLogo src={avengersLogo} />
+                </Row>
+            </ComicsBannerInner>
+        </Container>
     )
 }

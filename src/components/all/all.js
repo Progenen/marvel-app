@@ -56,7 +56,7 @@ const TitleH3 = styled.h3`
     ${props => props.active ? props.colorActive : props.color}
 `;
 
-const ButtonWrapper = styled.button`
+const Button = styled.button`
     display: block;
     min-width: ${
         props => {
@@ -131,7 +131,6 @@ const ButtonWrapper = styled.button`
         }
     }
 `;
-
 const TitleH2 = styled.h2`
     font-size: 24px;
     font-weight: bold;
@@ -155,11 +154,21 @@ const Input = styled.input`
     }
 `
 
-function Button (props) {
-    return (
-        <ButtonWrapper size={props.size} colorBG={props.colorBG}>
-            <span>{props.children}</span>
-        </ButtonWrapper>
-    )
-}
-export { Container, Row, Col, colorRed, colorModBlack, TitleH3, TitleH2, Button, Input };
+const Text = styled.p`
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: ${props => props.color ? props.color : '#fff'};
+`
+
+const ImgFull = styled.img`
+    width: 100%;
+    height: 100%;
+    max-height: ${props => props.maxHeight !== '' || props.maxHeight !== undefined || props.maxHeight !== false ? props.maxHeight : 'none'};
+    max-width: ${props => props.maxWidth !== '' || props.maxWidth !== undefined || props.maxWidth !== false ? props.maxWidth : 'none'};
+
+`;
+
+export { Container, Row, Col, colorRed, colorModBlack, TitleH3, TitleH2, Button, Input, ImgFull, Text };

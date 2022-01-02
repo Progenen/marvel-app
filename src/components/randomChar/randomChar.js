@@ -79,10 +79,10 @@ function RandomChar () {
                         </RandomChartLeftText>
                         <RandomCharLeftUi>
                             <RandomCharLeftBtn size="md" colorBG="red">
-                                HOMEPAGE
+                                <span>HOMEPAGE</span>
                             </RandomCharLeftBtn>
                             <RandomCharLeftBtn size="md" colorBG="gray">
-                                WIKI
+                                <span>WIKI</span>
                             </RandomCharLeftBtn>
                         </RandomCharLeftUi>
                     </RandomCharLeftInfo>
@@ -96,7 +96,7 @@ function RandomChar () {
                     Or choose another one
                     </RandomCharRightTitle2>
                     <RandomCharLeftBtn size="md" colorBG="red">
-                        try it
+                        <span>try it</span>
                     </RandomCharLeftBtn>
                 </RandomCharRight>
             </Row>
