@@ -15,39 +15,39 @@ const ComicsArticleImg = styled(ImgFull)`
     min-height: 160px;
 `;
 
-const ComicsContentCol = styled.div`
+const ComicsArticleContentCol = styled.div`
     flex: 0 1 68.444%;
 `;
 
-const ComicsContentHeader = styled.div`
+const ComicsArticleContentHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 22px;
 `
 
-const ComicsBack = styled.a`
+const ComicsArticleBack = styled.a`
     text-decoration: none;
     color: #000;
     font-size: 18px;
     font-weight: 700;
 `
 
-const ComicsContentText = styled(Text)`
+const ComicsArticleContentText = styled(Text)`
     color: #000;
     max-width: 550px;
     width: 100%;
 `
 
-const ComicsPages = styled(Text)`
+const ComicsArticlePages = styled(Text)`
     color: #000;
     margin: 40px 0 25px 0;
 `
 
-const ComicsLang = styled(Text)`
+const ComicsArticleLang = styled(Text)`
     color: #000;`
 
-const ComicsPrice = styled(TitleH2)`
+const ComicsArticlePrice = styled(TitleH2)`
     color: ${colorRed};
     margin-top: 25px;
 
@@ -64,28 +64,28 @@ export default function ComicsArticle() {
                         <ComicsArticleImgCol>
                             <ComicsArticleImg src={comicsPlaceholder} maxHeight="450px" />
                         </ComicsArticleImgCol>
-                        <ComicsContentCol>
-                            <ComicsContentHeader>
+                        <ComicsArticleContentCol>
+                            <ComicsArticleContentHeader>
                                 <TitleH3 color={"#000"}>
                                     X-Men: Days of Future Past
                                 </TitleH3>
-                                <ComicsBack>
+                                <ComicsArticleBack>
                                     Back to all
-                                </ComicsBack>
-                            </ComicsContentHeader>
-                            <ComicsContentText color="#000">
+                                </ComicsArticleBack>
+                            </ComicsArticleContentHeader>
+                            <ComicsArticleContentText color="#000">
                                 Re-live the legendary first journey into the dystopian future of 2013 - where Sentinels stalk the Earth, and the X-Men are humanity's only hope...until they die! Also featuring the first appearance of Alpha Flight, the return of the Wendigo, the history of the X-Men from Cyclops himself...and a demon for Christmas!?
-                            </ComicsContentText>
-                            <ComicsPages>
+                            </ComicsArticleContentText>
+                            <ComicsArticlePages>
                                 144 pages
-                            </ComicsPages>
-                            <ComicsLang>
+                            </ComicsArticlePages>
+                            <ComicsArticleLang>
                                 Language: en-us
-                            </ComicsLang>
-                            <ComicsPrice>
+                            </ComicsArticleLang>
+                            <ComicsArticlePrice>
                                 9.99$
-                            </ComicsPrice>
-                        </ComicsContentCol>
+                            </ComicsArticlePrice>
+                        </ComicsArticleContentCol>
                     </Row>
                 </ComicsArticleInner>
             </Container>
