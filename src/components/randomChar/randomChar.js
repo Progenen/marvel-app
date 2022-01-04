@@ -4,6 +4,7 @@ import randomCharRightBg from '../../images/molot_shield.png';
 import { Component } from 'react';
 import MarvelService from '../../services/marvelService';
 import Spinner from '../spinner/spinner';
+import ErrorMessage from '../errorMessage/errorMessage';
 
 const RandomCharInner = styled.section`
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
@@ -66,24 +67,67 @@ const RandomCharRightTitle2 = styled(TitleH2)`
     margin-bottom: 17px;
 `;
 
+const View = ({ char }) => {
+
+    const { name, description, thumbnail, homepage, wiki } = char;
+
+    return (
+        <>
+            <RandomCharLeftImg src={thumbnail} />
+            <RandomCharLeftInfo>
+                <TitleH3>
+                    {name}
+                </TitleH3>
+                <RandomChartLeftText>
+                    {description}
+                </RandomChartLeftText>
+                <RandomCharLeftUi>
+                    <RandomCharLeftBtn href={homepage} size="md" colorBG="red">
+                        <span>HOMEPAGE</span>
+                    </RandomCharLeftBtn>
+                    <RandomCharLeftBtn href={wiki} size="md" colorBG="gray">
+                        <span>WIKI</span>
+                    </RandomCharLeftBtn>
+                </RandomCharLeftUi>
+            </RandomCharLeftInfo>
+        </>
+    )
+}
+
 class RandomChar extends Component {
 
     state = {
         char: {},
-        loading: true
+        loading: true,
+        error: false
     }
 
     service = new MarvelService();
 
     onCharLoaded = (char) => {
-        this.setState({char})
+        this.setState({ char, loading: false })
+    }
+
+    onCharLoading = () => {
+        this.setState({
+            loading: true
+        })
+    }
+
+    onError = () => {
+        this.setState({
+            loading: false, 
+            error: true
+        })
     }
 
     updateChar = () => {
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000)
+        this.onCharLoading()
         this.service
             .getCharacterById(id)
             .then(this.onCharLoaded)
+            .catch(this.onError)
     }
 
     componentDidMount = () => {
@@ -92,33 +136,19 @@ class RandomChar extends Component {
 
     render() {
 
-        const { char: {name, description, thumbnail, homepage, wiki}, loading } = this.state;
-
-        if (loading === true) {
-            return (<Spinner/>)
-        }
-
+        const { char, loading, error } = this.state;
+        
+        const errorMessage = error ? <ErrorMessage/> : null
+        const spinner = loading ? <Spinner/> : null 
+        const content = !(loading || error) ? <View char={char}/> : null
+ 
         return (
             <RandomCharInner>
                 <Row>
                     <RandomCharleft size="50%">
-                        <RandomCharLeftImg src={thumbnail} />
-                        <RandomCharLeftInfo>
-                            <TitleH3>
-                                {name}
-                            </TitleH3>
-                            <RandomChartLeftText>
-                                {description}
-                            </RandomChartLeftText>
-                            <RandomCharLeftUi>
-                                <RandomCharLeftBtn href={homepage} size="md" colorBG="red">
-                                    <span>HOMEPAGE</span>
-                                </RandomCharLeftBtn>
-                                <RandomCharLeftBtn href={wiki} size="md" colorBG="gray">
-                                    <span>WIKI</span>
-                                </RandomCharLeftBtn>
-                            </RandomCharLeftUi>
-                        </RandomCharLeftInfo>
+                        {errorMessage}
+                        {spinner}
+                        {content}
                     </RandomCharleft>
                     <RandomCharRight size="50%">
                         <TitleH2>
@@ -128,7 +158,7 @@ class RandomChar extends Component {
                         <RandomCharRightTitle2>
                             Or choose another one
                         </RandomCharRightTitle2>
-                        <RandomCharLeftBtn onClick={() => {this.updateChar()}} size="md" colorBG="red">
+                        <RandomCharLeftBtn onClick={() => { this.updateChar() }} size="md" colorBG="red">
                             <span>try it</span>
                         </RandomCharLeftBtn>
                     </RandomCharRight>

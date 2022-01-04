@@ -2,9 +2,12 @@ import styled from "styled-components"
 import { Button, Col, Row, TitleH2 } from "../all/all"
 import cardThumbnail from "../../images/char.jpg";
 import loader from "../../images/loaderChar.png";
-import CharItem from "../charCard/charCard";
 import CharSearch from "../charSearch/charSearch";
 import { Component } from "react";
+import MarvelService from "../../services/marvelService";
+import CharCard from "../charCard/charCard";
+import ErrorMessage from "../errorMessage/errorMessage";
+import Spinner from "../spinner/spinner";
 const CatalogCharInner = styled.section`
     padding: 50px 0;
 `;
@@ -96,13 +99,65 @@ function CatalogCharInfoLoader() {
 
 export default class CatalogChar extends Component {
 
+    state = {
+        charList: [],
+        loading: true,
+        error: false
+    }
+
+    service = new MarvelService()
+
+    componentDidMount () {
+        this.service.getAllCharacters()
+            .then(this.onCharListLoaded)
+            .catch(this.onError)
+    }
+
+    onCharListLoaded = (charList) => {
+        this.setState({ charList, loading: false })
+        console.log(charList);
+    }
+
+    onCharListLoading = () => {
+        this.setState({
+            loading: true
+        })
+    }
+
+    onError = () => {
+        this.setState({
+            loading: false, 
+            error: true
+        })
+    }
+
+    renderChars = (chars) => {
+        return chars.map(item => {
+            return (
+                <CharCard name={item.name} img={item.thumbnail} key={item.id} />
+            )
+        })
+    }
+
     render() {
+
+
+        
+        const { charList, loading, error } = this.state;
+        const chars = this.renderChars(charList)
+        
+        const errorMessage = error ? <ErrorMessage/> : null
+        const spinner = loading ? <Spinner/> : null 
+        const content = !(loading || error) ? chars : null
+
         return (
             <CatalogCharInner>
                 <Row justifyContent="space-between">
                     <CatalogCharList>
-                        <Row>
-                            <CharItem name="ABYSS"></CharItem>
+                        <Row wrap={'wrap'}>
+                            {errorMessage}
+                            {spinner}
+                            {content}
                         </Row>
                         <CatalogCharListBtn size="big" colorBG="red"><span>load more</span></CatalogCharListBtn>
                     </CatalogCharList>

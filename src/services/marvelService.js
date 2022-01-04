@@ -31,7 +31,8 @@ export default class MarvelService {
             description: data.description,
             thumbnail: data.thumbnail.path + '.' + data.thumbnail.extension,
             homepage: data.urls[0].url,
-            wiki: data.urls[1].url
+            wiki: data.urls[1].url,
+            id: data.id
         }
     }
 

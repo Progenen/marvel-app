@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import { colorModBlack, colorRed, TitleH2 } from "../all/all";
-import cardThumbnail from "../../images/char.jpg";
 
 const CatalogCharCard = styled.div`
-    min-width: 200px;
-    min-height: 318px;
+    max-width: 200px;
+    height: 318px;
     display: block;
     margin: 15px 12.5px 15px 12.5px;
     background-color: ${colorModBlack};
@@ -19,7 +18,7 @@ const CatalogCharCard = styled.div`
 `;
 
 const CatalogCharCardHeader = styled.div`
-    max-height: 200px;
+    height: 200px;
     max-width: 200px;
 `;
 
@@ -41,11 +40,11 @@ const CatalogCharInfoFormError = styled.div`
     margin-top: 25px;
 `
 
-export default function CharItem (props) {
+export default function CharCard (props) {
     return (
         <CatalogCharCard active={props.active}>
             <CatalogCharCardHeader>
-                <CatalogCharCardImg src={cardThumbnail} />
+                <CatalogCharCardImg src={props.img} />
             </CatalogCharCardHeader>
             <CatalogCharCardBody>
                 <TitleH2>{props.name}</TitleH2>
