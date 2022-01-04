@@ -3,6 +3,7 @@ import { Button, Col, colorModBlack, Row, TitleH2, TitleH3 } from '../all/all';
 import randomCharRightBg from '../../images/molot_shield.png';
 import { Component } from 'react';
 import MarvelService from '../../services/marvelService';
+import Spinner from '../spinner/spinner';
 
 const RandomCharInner = styled.section`
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.25);
@@ -68,22 +69,21 @@ const RandomCharRightTitle2 = styled(TitleH2)`
 class RandomChar extends Component {
 
     state = {
-        name: null,
-        description: null,
-        thumbnail: null,
-        homepage: null,
-        wiki: null
+        char: {},
+        loading: true
     }
 
     service = new MarvelService();
 
+    onCharLoaded = (char) => {
+        this.setState({char})
+    }
+
     updateChar = () => {
-        // const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000)
-        const id = 2
-        this.service.getCharacterById(id)
-            .then(res => {
-                this.setState(res)
-            })
+        const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000)
+        this.service
+            .getCharacterById(id)
+            .then(this.onCharLoaded)
     }
 
     componentDidMount = () => {
@@ -92,7 +92,11 @@ class RandomChar extends Component {
 
     render() {
 
-        const { name, description, thumbnail, homepage, wiki } = this.state;
+        const { char: {name, description, thumbnail, homepage, wiki}, loading } = this.state;
+
+        if (loading === true) {
+            return (<Spinner/>)
+        }
 
         return (
             <RandomCharInner>

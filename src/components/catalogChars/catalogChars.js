@@ -4,6 +4,7 @@ import cardThumbnail from "../../images/char.jpg";
 import loader from "../../images/loaderChar.png";
 import CharItem from "../charCard/charCard";
 import CharSearch from "../charSearch/charSearch";
+import { Component } from "react";
 const CatalogCharInner = styled.section`
     padding: 50px 0;
 `;
@@ -46,7 +47,7 @@ const CatalogCharInfoUi = styled(Row)`
     button {
         margin-top: 10px;
     }
-`; 
+`;
 
 const CatalogCharInfoName = styled(TitleH2)`
     height: 100%;
@@ -84,7 +85,7 @@ const LoaderImg = styled.img`
 `
 
 // eslint-disable-next-line
-function CatalogCharInfoLoader () {
+function CatalogCharInfoLoader() {
     return (
         <CatalogCharInfoInner>
             <CatalogCharInfoTitle cssStyle="text-align: center">Please select a character to see information</CatalogCharInfoTitle>
@@ -93,73 +94,75 @@ function CatalogCharInfoLoader () {
     )
 }
 
-export default function CatalogChar() {
-    return (
-        <CatalogCharInner>
-            <Row justifyContent="space-between">
-                <CatalogCharList>
-                    <Row>
-                        
-                    <CharItem name="ABYSS"></CharItem>
-                    </Row>
-                    <CatalogCharListBtn size="big" colorBG="red"><span>load more</span></CatalogCharListBtn>
-                </CatalogCharList>
-                <CatalogCharInfo>
-                    <CatalogCharInfoInner>
-                        <Row alignItems="stretch">
-                            <CatalogCharInfoAvatar>
-                                <CatalogCharInfoAvatarImg src={cardThumbnail} />
-                            </CatalogCharInfoAvatar>
-                            <CatalogCharInfoUi>
-                                <CatalogCharInfoName color="#000">ABYSS</CatalogCharInfoName>
-                                <Button size="md" colorBG="red"><span>HOMEPAGE</span></Button>
-                                <Button size="md" colorBG="gray"><span>WIKI</span></Button>
-                            </CatalogCharInfoUi>
+export default class CatalogChar extends Component {
+
+    render() {
+        return (
+            <CatalogCharInner>
+                <Row justifyContent="space-between">
+                    <CatalogCharList>
+                        <Row>
+                            <CharItem name="ABYSS"></CharItem>
                         </Row>
-                        <p>
-                        In Norse mythology, Loki is a god or jötunn (or both). Loki is the son of Fárbauti and Laufey, and the brother of Helblindi and Býleistr. By the jötunn Angrboða, Loki is the father of Hel, the wolf Fenrir, and the world serpent Jörmungandr. By Sigyn, Loki is the father of Nari and/or Narfi and with the stallion Svaðilfari as the father, Loki gave birth—in the form of a mare—to the eight-legged horse Sleipnir. In addition, Loki is referred to as the father of Váli in the Prose Edda.
-                        </p>
-                        <CatalogCharInfoTitle color="#000">
-                            Comics:
-                        </CatalogCharInfoTitle>
-                        <CatalogCharInfoList>
-                            <CatalogCharInfoItem>
-                                All-Winners Squad: Band of Heroes (2011) #3
-                            </CatalogCharInfoItem>
-                            <CatalogCharInfoItem>
-                                Alpha Flight (1983) #50
-                            </CatalogCharInfoItem>
-                            <CatalogCharInfoItem>
-                                Amazing Spider-Man (1999) #503
-                            </CatalogCharInfoItem>
-                            <CatalogCharInfoItem>
-                                Amazing Spider-Man (1999) #504
-                            </CatalogCharInfoItem>
-                            <CatalogCharInfoItem>
-                            AMAZING SPIDER-MAN VOL. 7: BOOK OF EZEKIEL TPB (Trade Paperback)
-                            </CatalogCharInfoItem>
-                            <CatalogCharInfoItem>
-                            Amazing-Spider-Man: Worldwide Vol. 8 (Trade Paperback)
-                            </CatalogCharInfoItem>
-                            <CatalogCharInfoItem>
-                            Asgardians Of The Galaxy Vol. 2: War Of The Realms (Trade Paperback)
-                            </CatalogCharInfoItem>
-                            <CatalogCharInfoItem>
-                            CatalogCharInfoSpecItem
-                            </CatalogCharInfoItem>
-                            <CatalogCharInfoItem>
-                            Avengers (1963) #1
-                            </CatalogCharInfoItem>
-                            <CatalogCharInfoItem>
-                            Avengers (1996) #1
-                            </CatalogCharInfoItem>
-                        </CatalogCharInfoList>
-                    </CatalogCharInfoInner>
-                    <CharSearch/>
-                </CatalogCharInfo>
-            </Row>
-        </CatalogCharInner>
-    )
+                        <CatalogCharListBtn size="big" colorBG="red"><span>load more</span></CatalogCharListBtn>
+                    </CatalogCharList>
+                    <CatalogCharInfo>
+                        <CatalogCharInfoInner>
+                            <Row alignItems="stretch">
+                                <CatalogCharInfoAvatar>
+                                    <CatalogCharInfoAvatarImg src={cardThumbnail} />
+                                </CatalogCharInfoAvatar>
+                                <CatalogCharInfoUi>
+                                    <CatalogCharInfoName color="#000">ABYSS</CatalogCharInfoName>
+                                    <Button size="md" colorBG="red"><span>HOMEPAGE</span></Button>
+                                    <Button size="md" colorBG="gray"><span>WIKI</span></Button>
+                                </CatalogCharInfoUi>
+                            </Row>
+                            <p>
+                                In Norse mythology, Loki is a god or jötunn (or both). Loki is the son of Fárbauti and Laufey, and the brother of Helblindi and Býleistr. By the jötunn Angrboða, Loki is the father of Hel, the wolf Fenrir, and the world serpent Jörmungandr. By Sigyn, Loki is the father of Nari and/or Narfi and with the stallion Svaðilfari as the father, Loki gave birth—in the form of a mare—to the eight-legged horse Sleipnir. In addition, Loki is referred to as the father of Váli in the Prose Edda.
+                            </p>
+                            <CatalogCharInfoTitle color="#000">
+                                Comics:
+                            </CatalogCharInfoTitle>
+                            <CatalogCharInfoList>
+                                <CatalogCharInfoItem>
+                                    All-Winners Squad: Band of Heroes (2011) #3
+                                </CatalogCharInfoItem>
+                                <CatalogCharInfoItem>
+                                    Alpha Flight (1983) #50
+                                </CatalogCharInfoItem>
+                                <CatalogCharInfoItem>
+                                    Amazing Spider-Man (1999) #503
+                                </CatalogCharInfoItem>
+                                <CatalogCharInfoItem>
+                                    Amazing Spider-Man (1999) #504
+                                </CatalogCharInfoItem>
+                                <CatalogCharInfoItem>
+                                    AMAZING SPIDER-MAN VOL. 7: BOOK OF EZEKIEL TPB (Trade Paperback)
+                                </CatalogCharInfoItem>
+                                <CatalogCharInfoItem>
+                                    Amazing-Spider-Man: Worldwide Vol. 8 (Trade Paperback)
+                                </CatalogCharInfoItem>
+                                <CatalogCharInfoItem>
+                                    Asgardians Of The Galaxy Vol. 2: War Of The Realms (Trade Paperback)
+                                </CatalogCharInfoItem>
+                                <CatalogCharInfoItem>
+                                    CatalogCharInfoSpecItem
+                                </CatalogCharInfoItem>
+                                <CatalogCharInfoItem>
+                                    Avengers (1963) #1
+                                </CatalogCharInfoItem>
+                                <CatalogCharInfoItem>
+                                    Avengers (1996) #1
+                                </CatalogCharInfoItem>
+                            </CatalogCharInfoList>
+                        </CatalogCharInfoInner>
+                        <CharSearch />
+                    </CatalogCharInfo>
+                </Row>
+            </CatalogCharInner>
+        )
+    }
 }
 
 
